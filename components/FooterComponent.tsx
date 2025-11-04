@@ -7,17 +7,17 @@ const FooterIcon = ({ children }: { children: React.ReactNode }) => (
 );
 
 const ContactIcon = ({ children }: { children: React.ReactNode }) => (
-  <div className="bg-blue-900/10 w-10 h-10 rounded-full flex items-center justify-center mr-3 text-blue-900">
+  <div className="bg-green-800 w-10 h-10 rounded-full flex items-center justify-center mr-3 text-white">
     {children}
   </div>
 );
 
 const FooterComponent = () => {
   return (
-    <footer className="bg-white pt-4">
+    <footer className="bg-green-900 pt-4 text-white">
       
-      {/* 1. Top Quick Links Bar (Yellow/Blue Section) */}
-      <div className="bg-yellow-500 text-blue-900 py-4 shadow-md">
+      {/* 1. Top Quick Links Bar (Yellow/Green Section) */}
+      <div className="bg-green-800 text-white py-4 shadow-md">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-wrap justify-between items-center">
           
           {/* Quick Links Title */}
@@ -36,7 +36,7 @@ const FooterComponent = () => {
               <a
                 key={index}
                 href={`#${link.label.toLowerCase().replace(/ /g, '-')}`}
-                className="flex items-center font-semibold hover:text-blue-700 transition-colors"
+                className="flex items-center font-semibold hover:text-green-200 transition-colors"
               >
                 <FooterIcon>
                   <span className="text-sm">{link.icon}</span>
@@ -49,7 +49,7 @@ const FooterComponent = () => {
       </div>
       
       {/* 2. Social Media Links Bar */}
-      <div className="bg-blue-900/90 py-3">
+      <div className="bg-green-700/90 py-3">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-wrap justify-center md:justify-start items-center space-x-4 text-white">
           {[
             { name: 'Facebook', icon: 'fb', url: '#facebook' },
@@ -63,7 +63,7 @@ const FooterComponent = () => {
             <a
               key={media.name}
               href={media.url}
-              className="flex items-center text-sm font-medium hover:text-yellow-500 transition-colors"
+              className="flex items-center text-sm font-medium hover:text-yellow-300 transition-colors"
             >
               <span className="w-5 h-5 border rounded-full flex items-center justify-center mr-1 text-xs uppercase">
                 {media.icon}
@@ -75,111 +75,111 @@ const FooterComponent = () => {
       </div>
 
       {/* 3. Main Footer Links (Multi-Column) */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 text-gray-700">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
         <div className="grid grid-cols-2 md:grid-cols-5 gap-8">
           
           {/* Column 1: Company */}
           <div>
-            <h4 className="font-bold text-blue-900 mb-4">Company</h4>
+            <h4 className="font-bold mb-4">Company</h4>
             <ul className="space-y-2 text-sm">
-              <li><a href="#about" className="hover:text-blue-600">About [Your Company Name]</a></li>
-              <li><a href="#board" className="hover:text-blue-600">Board of Directors</a></li>
-              <li><a href="#management" className="hover:text-blue-600">Senior Management</a></li>
-              <li><a href="#regional" className="hover:text-blue-600">Regional Managers</a></li>
-              <li><a href="#privacy" className="hover:text-blue-600">Data Privacy & Security</a></li>
-              <li><a href="#policy" className="hover:text-blue-600">Company Policy</a></li>
+              <li><a href="#about" className="hover:text-green-200">About [Your Company Name]</a></li>
+              <li><a href="#board" className="hover:text-green-200">Board of Directors</a></li>
+              <li><a href="#management" className="hover:text-green-200">Senior Management</a></li>
+              <li><a href="#regional" className="hover:text-green-200">Regional Managers</a></li>
+              <li><a href="#privacy" className="hover:text-green-200">Data Privacy & Security</a></li>
+              <li><a href="#policy" className="hover:text-green-200">Company Policy</a></li>
             </ul>
           </div>
 
           {/* Column 2: eProcurement / eSourcing */}
           <div>
-            <h4 className="font-bold text-blue-900 mb-4">eSourcing</h4>
+            <h4 className="font-bold mb-4">eSourcing</h4>
             <ul className="space-y-2 text-sm">
-              <li><a href="#tender-app" className="hover:text-blue-600">Supplier Registration</a></li>
-              <li><a href="#latest-tenders" className="hover:text-blue-600">Active RFPs/RFQs</a></li>
-              <li><a href="#limited-tenders" className="hover:text-blue-600">Limited Bids</a></li>
-              <li><a href="#user-manuals" className="hover:text-blue-600">Vendor Manuals</a></li>
+              <li><a href="#tender-app" className="hover:text-green-200">Supplier Registration</a></li>
+              <li><a href="#latest-tenders" className="hover:text-green-200">Active RFPs/RFQs</a></li>
+              <li><a href="#limited-tenders" className="hover:text-green-200">Limited Bids</a></li>
+              <li><a href="#user-manuals" className="hover:text-green-200">Vendor Manuals</a></li>
             </ul>
           </div>
 
           {/* Column 3: Downloads */}
           <div>
-            <h4 className="font-bold text-blue-900 mb-4">Downloads</h4>
+            <h4 className="font-bold mb-4">Downloads</h4>
             <ul className="space-y-2 text-sm">
-              <li><a href="#service-guides" className="hover:text-blue-600">Service Guides</a></li>
-              <li><a href="#audit-reports" className="hover:text-blue-600">Sustainability Reports</a></li>
-              <li><a href="#pricing" className="hover:text-blue-600">Pricing Schedules</a></li>
-              <li><a href="#forms" className="hover:text-blue-600">Application Forms</a></li>
+              <li><a href="#service-guides" className="hover:text-green-200">Service Guides</a></li>
+              <li><a href="#audit-reports" className="hover:text-green-200">Sustainability Reports</a></li>
+              <li><a href="#pricing" className="hover:text-green-200">Pricing Schedules</a></li>
+              <li><a href="#forms" className="hover:text-green-200">Application Forms</a></li>
             </ul>
           </div>
 
           {/* Column 4: Popular Links */}
           <div>
-            <h4 className="font-bold text-blue-900 mb-4">Popular Links</h4>
+            <h4 className="font-bold mb-4">Popular Links</h4>
             <ul className="space-y-2 text-sm">
-              <li><a href="#careers" className="hover:text-blue-600">Careers</a></li>
-              <li><a href="#contact" className="hover:text-blue-600">Contact Us</a></li>
-              <li><a href="#partners" className="hover:text-blue-600">Recycling Partners</a></li>
-              <li><a href="#regulators" className="hover:text-blue-600">Industry Regulators</a></li>
-              <li><a href="#waste-tech" className="hover:text-blue-600">Waste Technology</a></li>
+              <li><a href="#careers" className="hover:text-green-200">Careers</a></li>
+              <li><a href="#contact" className="hover:text-green-200">Contact Us</a></li>
+              <li><a href="#partners" className="hover:text-green-200">Recycling Partners</a></li>
+              <li><a href="#regulators" className="hover:text-green-200">Industry Regulators</a></li>
+              <li><a href="#waste-tech" className="hover:text-green-200">Waste Technology</a></li>
             </ul>
           </div>
           
           {/* Column 5: Support */}
           <div>
-            <h4 className="font-bold text-blue-900 mb-4">Support</h4>
+            <h4 className="font-bold mb-4">Support</h4>
             <ul className="space-y-2 text-sm">
-              <li><a href="#new-cust" className="hover:text-blue-600">New Customers</a></li>
-              <li><a href="#acc-types" className="hover:text-blue-600">Service Plans & Types</a></li>
-              <li><a href="#faq" className="hover:text-blue-600">Articles & FAQs</a></li>
-              <li><a href="#scheduled" className="hover:text-blue-600">Scheduled Pickups</a></li>
-              <li><a href="#disruption" className="hover:text-blue-600">Service Disruptions</a></li>
+              <li><a href="#new-cust" className="hover:text-green-200">New Customers</a></li>
+              <li><a href="#acc-types" className="hover:text-green-200">Service Plans & Types</a></li>
+              <li><a href="#faq" className="hover:text-green-200">Articles & FAQs</a></li>
+              <li><a href="#scheduled" className="hover:text-green-200">Scheduled Pickups</a></li>
+              <li><a href="#disruption" className="hover:text-green-200">Service Disruptions</a></li>
             </ul>
           </div>
         </div>
       </div>
-      
+
       {/* 4. Bottom Contact Info Bar */}
-      <div className="border-t border-gray-200 pt-6 pb-10">
+      <div className="border-t border-green-700 pt-6 pb-10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-wrap justify-center lg:justify-between items-start space-y-4 lg:space-y-0 text-center lg:text-left">
           
           <div className="flex flex-col items-center lg:flex-row lg:w-auto w-full">
             <ContactIcon><span className="text-xl">#</span></ContactIcon>
             <div>
-              <p className="font-semibold text-sm text-blue-900">USSD / Mobile App</p>
-              <p className="text-xl font-bold text-gray-800">*777#</p>
+              <p className="font-semibold text-sm">USSD / Mobile App</p>
+              <p className="text-xl font-bold">*777#</p>
             </div>
           </div>
           
           <div className="flex flex-col items-center lg:flex-row lg:w-auto w-full">
             <ContactIcon><span className="text-xl">📞</span></ContactIcon>
             <div>
-              <p className="font-semibold text-sm text-blue-900">National Contact Center</p>
-              <p className="text-xl font-bold text-gray-800">77777</p>
+              <p className="font-semibold text-sm">National Contact Center</p>
+              <p className="text-xl font-bold">77777</p>
             </div>
           </div>
 
           <div className="flex flex-col items-center lg:flex-row lg:w-auto w-full">
             <ContactIcon><span className="text-xl">📧</span></ContactIcon>
             <div>
-              <p className="font-semibold text-sm text-blue-900">Support Email</p>
-              <p className="text-xl font-bold text-gray-800">customercare@wastemanagement.co.ke</p>
+              <p className="font-semibold text-sm">Support Email</p>
+              <p className="text-xl font-bold">customercare@wastemanagement.co.ke</p>
             </div>
           </div>
 
           <div className="flex flex-col items-center lg:flex-row lg:w-auto w-full">
             <ContactIcon><span className="text-xl">📍</span></ContactIcon>
             <div>
-              <p className="font-semibold text-sm text-blue-900">Head Office</p>
-              <p className="text-xl font-bold text-gray-800">Kolobot Rd, Eco Plaza</p>
+              <p className="font-semibold text-sm">Head Office</p>
+              <p className="text-xl font-bold">Kolobot Rd, Eco Plaza</p>
             </div>
           </div>
 
           <div className="flex flex-col items-center lg:flex-row lg:w-auto w-full">
             <ContactIcon><span className="text-xl">✉️</span></ContactIcon>
             <div>
-              <p className="font-semibold text-sm text-blue-900">P.O. BOX</p>
-              <p className="text-xl font-bold text-gray-800">30099-00100</p>
+              <p className="font-semibold text-sm">P.O. BOX</p>
+              <p className="text-xl font-bold">30099-00100</p>
             </div>
           </div>
 
@@ -187,7 +187,7 @@ const FooterComponent = () => {
       </div>
       
       {/* 5. Copyright */}
-      <div className="bg-gray-100 py-3 text-center text-xs text-gray-500">
+      <div className="bg-green-800 py-3 text-center text-xs">
         &copy; {new Date().getFullYear()} [Your Company Name]. All Rights Reserved.
       </div>
       

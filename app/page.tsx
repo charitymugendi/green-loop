@@ -1,8 +1,7 @@
 import Hero from "@/components/Heroslider";
 import ServicesSection from "@/components/ServicesSection";
-import HeaderComponent from "@/components/Header";
-import WasteManagementCards from "@/components/WasteManagementCards";
-import AnimatedHeroSection from "@/components/AnimatedHeroSection"
+import CombinedWastePage from "@/components/CombinedWastePage";
+import AIHeroSection from "@/components/AIHeroSection"
 import FooterComponent from "@/components/FooterComponent"
 
 export default function Home() {
@@ -10,9 +9,8 @@ export default function Home() {
     <main className="bg-gray-50 min-h-screen">
       <Hero />
     <ServicesSection/>
-    <HeaderComponent/>
-    <WasteManagementCards />
-    <AnimatedHeroSection />
+    <CombinedWastePage />
+    <AIHeroSection />
     <FooterComponent />
   
     </main>
