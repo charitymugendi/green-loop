@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
+import Image from "next/image"; // ✅ Added for logo image
 
 // ✅ Reusable NavItem component
 const NavItem = ({
@@ -88,13 +89,16 @@ const WasteManagementNavBar = () => {
       {/* === 2. Main Navigation Bar === */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-20">
-          {/* Logo Section */}
+          {/* ✅ Logo Section with actual logo image */}
           <div className="flex-shrink-0 flex items-center">
             <div className="flex items-center">
-              <div className="w-8 h-8 mr-2 bg-yellow-400 rounded-full shadow-md"></div>
-              <span className="text-xl font-bold text-green-800">
-                Green Loop Waste Management
-              </span>
+              <Image
+                src="/images/logo.png" // ✅ Path to your logo in /public/images
+                alt="Green Loop Logo"
+                width={40}
+                height={40}
+                className="mr-2 rounded-full shadow-md"
+              />
             </div>
           </div>
 
@@ -102,36 +106,12 @@ const WasteManagementNavBar = () => {
           <div className="hidden lg:ml-6 lg:flex lg:space-x-4">
             <NavItem name="Home" href="/" />
             <NavItem name="About Us" href="/about" />
-            <NavItem name="Waste Collection" href="/collection"  />
+            <NavItem name="Waste Collection" href="/collection" />
             <NavItem name="Recycling Programs" href="/recycling" />
-            <NavItem name="Downloads" href="/downloads" />
-            <NavItem name="Projects" href="/projects"/>
-            <NavItem name="Community" href="/community" />
-            <NavItem name="Contact" href="/contact" />
+            <NavItem name="Register Now" href="/Register Now" />
           </div>
 
-          {/* Search + Mobile Toggle */}
           <div className="flex items-center">
-            <button
-              type="button"
-              className="p-3 rounded-full text-white bg-green-700 hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-400 transition"
-              title="Search"
-            >
-              <svg
-                className="h-5 w-5"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
-                ></path>
-              </svg>
-            </button>
-
             {/* Mobile Menu Button */}
             <div className="lg:hidden ml-3">
               <button
@@ -182,9 +162,7 @@ const WasteManagementNavBar = () => {
               "About Us",
               "Waste Collection",
               "Recycling Programs",
-              "Projects",
-              "Community",
-              "Contact",
+              "Register Now",
             ].map((item) => (
               <a
                 key={item}
@@ -197,8 +175,6 @@ const WasteManagementNavBar = () => {
           </div>
         </div>
       )}
-
-      
     </nav>
   );
 };

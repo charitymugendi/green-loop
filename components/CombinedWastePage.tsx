@@ -4,14 +4,12 @@ import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Home, Building2, Factory } from "lucide-react";
 import Link from "next/link"; // Use Next.js Link for page navigation
+import Image from "next/image"; // Needed for images
 
 // --- HeaderComponent ---
 const HeaderComponent = () => {
   return (
-    // Eco-friendly background with soft green tones and pattern overlay
     <div className="relative bg-gradient-to-br from-green-50 via-emerald-50 to-green-100 p-6 md:p-12 lg:p-16 overflow-hidden">
-      
-      {/* Subtle Leaf Pattern Background */}
       <div className="absolute inset-0 z-0 opacity-20">
         <svg
           className="w-full h-full"
@@ -41,17 +39,13 @@ const HeaderComponent = () => {
         </svg>
       </div>
 
-      {/* Main Content */}
       <div className="relative z-10 max-w-7xl mx-auto flex flex-col lg:flex-row items-center justify-between">
-        
-        {/* Left Side: Heading */}
         <div className="lg:w-1/2 mb-6 lg:mb-0">
           <h1 className="text-4xl md:text-6xl font-extrabold text-green-900 leading-tight drop-shadow-sm">
             Apply for Waste Management
           </h1>
         </div>
 
-        {/* Right Side: Description */}
         <div className="lg:w-1/2 lg:pl-12">
           <p className="text-sm md:text-base text-gray-700 max-w-xl">
             Applying for waste management services has never been easier. 
@@ -81,18 +75,21 @@ const serviceSegments = [
 const residentialCards = [
   {
     title: "Hostels / Student Housing",
+    imageSrc: "/images/hostels.png",
     description:
       "Specialized collection service for hostels, dormitories, or shared student accommodation. Ensures consistent pickup and eco-friendly disposal.",
     learnMoreLink: "/waste/residential/hostels",
   },
   {
     title: "Apartments / Staff Housing",
+    imageSrc: "/images/apartment.png",
     description:
       "Dedicated service for apartment complexes and staff housing units. Flexible pickup schedules to handle mixed residential volumes.",
     learnMoreLink: "/waste/residential/apartments",
   },
   {
     title: "Private Homes",
+    imageSrc: "/images/private homes.png",
     description:
       "Standard residential service for single-family homes. Includes scheduled and on-demand options tailored to your household's needs.",
     learnMoreLink: "/waste/residential/private-homes",
@@ -102,6 +99,7 @@ const residentialCards = [
 const commercialSmeCards = [
   {
     title: "Small & Medium Enterprises",
+    imageSrc: "/images/commercial.png", // Placeholder image added
     description:
       "Tailored solutions for SMEs producing moderate waste volumes. Supports restaurants, offices, and institutions with scheduled pickups.",
     learnMoreLink: "/waste/commercial/sme",
@@ -111,13 +109,21 @@ const commercialSmeCards = [
 const industrialCards = [
   {
     title: "Industrial Waste Management",
+    imageSrc: "/images/industrial.png", // Placeholder image added
     description:
       "High-volume waste solutions for factories, manufacturing plants, and large facilities. Includes regulatory compliance and environmental audits.",
     learnMoreLink: "/waste/industrial",
   },
 ];
 
-const WasteCardsGrid = ({ cards }: { cards: typeof residentialCards }) => {
+type CardType = {
+  title: string;
+  description: string;
+  learnMoreLink: string;
+  imageSrc: string;
+};
+
+const WasteCardsGrid = ({ cards }: { cards: CardType[] }) => {
   return (
     <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
       {cards.map((card) => (
@@ -126,6 +132,12 @@ const WasteCardsGrid = ({ cards }: { cards: typeof residentialCards }) => {
           className="bg-white rounded-xl shadow-lg overflow-hidden flex flex-col hover:shadow-xl transition duration-300"
         >
           <div className="relative h-40 md:h-44 bg-green-50 flex items-center justify-center">
+            <Image
+              src={card.imageSrc}
+              alt={card.title}
+              fill
+              className="object-cover"
+            />
             <div className="absolute inset-0 bg-gradient-to-t from-green-700/40 to-transparent"></div>
             <span className="relative z-10 text-green-900 text-sm font-medium bg-white/70 px-3 py-1 rounded">
               {card.title}

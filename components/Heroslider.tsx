@@ -6,58 +6,44 @@ import Link from "next/link";
 
 export default function HeroSlider() {
   const slides = [
-    // ✅ First video slide retained
+    // ✅ 1️⃣ Green Loop Waste Management
     {
       type: "video",
       src: "/videos/waste1.mp4",
-      title: "GREEN LOOP WASTE MANAGEMENT",
-      desc: "A smart, community-driven solution for waste sorting, AI-powered scheduling, and a cleaner, greener Ndagani.",
-      cta: { label: "Get Started - Schedule Pickup", link: "/schedule" },
+      title: "Green Loop Waste Management",
+      desc: "Empowering communities with smart, eco-friendly waste solutions for a cleaner and greener Ndagani. Together, we close the loop for a sustainable future.",
+      cta: { label: "Learn More", link: "/about" },
       color: "from-green-700 to-green-500",
     },
 
-    // ✅ Updated slides start here
+    // ✅ 2️⃣ Report Waste Issues
     {
       type: "image",
-      src: "/images/pickup.jpg",
-      title: "Schedule Waste Pickup",
-      desc: "Book your waste collection easily and keep your environment clean and organized.",
+      src: "/images/report waste.png",
+      title: "Report Waste Issues",
+      desc: "See illegal dumping, littering, or overflowing bins? Help us act fast — report it instantly through our online platform.",
+      cta: { label: "Report Now", link: "/report" },
       color: "from-green-700 to-green-500",
     },
+
+    // ✅ 3️⃣ Online Services
     {
       type: "image",
-      src: "/images/recycling.jpg",
-      title: "Locate Recycling Centers",
-      desc: "Find the nearest recycling stations and promote responsible waste management.",
-      color: "from-yellow-600 to-green-500",
+      src: "/images/online services.png",
+      title: "Online Services",
+      desc: "Access all your Green Loop services online — schedule pickups, track collections, and view sustainability reports in one place.",
+      cta: { label: "Access Services", link: "/services" },
+      color: "from-green-700 to-green-500",
     },
+
+    // ✅ 4️⃣ Sustainability & Community
     {
       type: "image",
-      src: "/images/reports.jpg",
-      title: "Sustainability Reports",
-      desc: "Monitor community progress and data-driven reports on waste reduction and eco impact.",
-      color: "from-green-700 to-emerald-600",
-    },
-    {
-      type: "image",
-      src: "/images/donate.jpg",
-      title: "Donate to Foundation",
-      desc: "Support Green Loop’s mission and help fund impactful waste management projects.",
+      src: "/images/sustainablity.png",
+      title: "Sustainability & Community",
+      desc: "We promote recycling, education, and community-driven green projects that help protect the planet for future generations.",
+      cta: { label: "Join Us", link: "/community" },
       color: "from-emerald-700 to-green-500",
-    },
-    {
-      type: "image",
-      src: "/images/community.jpg",
-      title: "Community Projects",
-      desc: "Join our clean-up drives, sustainability workshops, and eco-innovation events.",
-      color: "from-green-700 to-green-500",
-    },
-    {
-      type: "image",
-      src: "/images/awareness.jpg",
-      title: "Environmental Awareness",
-      desc: "Learn how to protect our planet through education and community outreach.",
-      color: "from-yellow-600 to-green-500",
     },
   ];
 

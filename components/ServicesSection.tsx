@@ -7,7 +7,7 @@ const services = [
     title: "Smart Waste Pickup",
     description:
       "Easily schedule waste collection from your home or business using our digital platform — no more missed pickups.",
-    imageSrc: "/images/smart-waste-pickup.png", // Add your image in public/images
+    imageSrc: "/images/smart-waste-pickup.png",
   },
   {
     title: "AI Waste Sorting",
@@ -16,22 +16,16 @@ const services = [
     imageSrc: "/images/ai-waste-sorting.png",
   },
   {
-    title: "Data Insights & Reporting",
-    description:
-      "Track your recycling habits, view reports, and measure your environmental impact in real time.",
-    imageSrc: "/images/data-insights.png",
-  },
-  {
     title: "Community Engagement",
     description:
       "We empower students, collectors, and communities to take part in local clean-up and recycling initiatives.",
     imageSrc: "/images/community-engagement.png",
   },
   {
-    title: "Sustainability Awareness",
+    title: "Recycling Rewards Program",
     description:
-      "We promote environmental education and awareness to build a circular, waste-free economy.",
-    imageSrc: "/images/sustainability-awareness.png",
+      "Earn Green Points each time you recycle correctly and redeem them for discounts or community benefits.",
+    imageSrc: "/images/reward program.png", // Add a relevant image in public/images
   },
 ];
 
@@ -40,7 +34,7 @@ export default function ServicesSection() {
     <section className="py-20 bg-gray-50">
       <div className="max-w-7xl mx-auto px-6 text-center">
         {/* Cards Grid */}
-        <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
           {services.map((service, index) => (
             <div
               key={index}
