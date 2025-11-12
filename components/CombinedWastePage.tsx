@@ -3,8 +3,97 @@
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Home, Building2, Factory } from "lucide-react";
-import Link from "next/link"; // Use Next.js Link for page navigation
-import Image from "next/image"; // Needed for images
+import Link from "next/link"; 
+import Image from "next/image"; 
+import { useRouter } from "next/navigation"; 
+
+// --- TYPE DEFINITIONS ---
+type CardType = {
+  title: string;
+  description: string;
+  learnMoreLink: string;
+  imageSrc: string;
+};
+
+// --- DATA ARRAYS (FINAL) ---
+const serviceSegments = [
+  { id: "residential", name: "Residential", icon: <Home className="w-5 h-5 mr-2" /> },
+  { id: "commercial", name: "Commercial & SME", icon: <Building2 className="w-5 h-5 mr-2" /> },
+  { id: "industrial", name: "Industrial", icon: <Factory className="w-5 h-5 mr-2" /> },
+];
+
+const residentialCards: CardType[] = [
+  {
+    title: "Hostels / Student Housing",
+    imageSrc: "/images/hostels.png",
+    description:
+      "Specialized collection service for hostels, dormitories, or shared student accommodation. Ensures consistent pickup and eco-friendly disposal.",
+    learnMoreLink: "/waste/residential/hostels",
+  },
+  {
+    title: "Apartments / Staff Housing",
+    imageSrc: "/images/apartment.png",
+    description:
+      "Dedicated service for apartment complexes and staff housing units. Flexible pickup schedules to handle mixed residential volumes.",
+    learnMoreLink: "/waste/residential/apartments",
+  },
+  {
+    title: "Private Homes",
+    imageSrc: "/images/private homes.png",
+    description:
+    "Standard residential service for single-family homes. Includes scheduled and on-demand options tailored to your household's needs.",
+    learnMoreLink: "/waste/residential/private-homes",
+  },
+];
+
+const commercialSmeCards: CardType[] = [
+  {
+    title: "Small & Medium Enterprises",
+    imageSrc: "/images/commercial.png", 
+    description:
+      "Tailored solutions for SMEs producing moderate waste volumes. Supports offices, institutions, and restaurants with scheduled pickups.",
+    learnMoreLink: "/waste/commercial/sme",
+  },
+  {
+    title: "Hospitals & Clinics",
+    imageSrc: "/images/hospital.png", 
+    description:
+      "Specialized collection and disposal for clinical and non-clinical medical waste, ensuring strict regulatory compliance.",
+    learnMoreLink: "/waste/commercial/hospitals",
+  },
+  {
+    title: "Schools & Universities", 
+    imageSrc: "/images/school.png", 
+    description:
+      "Dedicated programs for educational campuses, focusing on paper recycling, composting, and student engagement initiatives.",
+    learnMoreLink: "/waste/commercial/schools",
+  },
+];
+
+const industrialCards: CardType[] = [
+  {
+    title: "Heavy Manufacturing Plants",
+    imageSrc: "/images/factory.png", 
+    description:
+      "High-volume, complex waste solutions tailored for large-scale production facilities, including scrap metal and chemical waste compliance.",
+    learnMoreLink: "/waste/industrial/heavy-manufacturing",
+  },
+  {
+    title: "Construction & Demolition",
+    imageSrc: "/images/construction.png", 
+    description:
+      "Management of concrete, timber, metals, and debris from construction and demolition sites, focusing on material recovery.",
+    learnMoreLink: "/waste/industrial/construction-waste",
+  },
+  {
+    title: "Industrial Parks & Warehouses",
+    imageSrc: "/images/warehouse.png", 
+    description:
+      "Comprehensive waste stream management for large parks, warehouses, and logistics centers, optimizing packaging and pallet recycling.",
+    learnMoreLink: "/waste/industrial/warehouses",
+  },
+];
+
 
 // --- HeaderComponent ---
 const HeaderComponent = () => {
@@ -55,8 +144,8 @@ const HeaderComponent = () => {
           </p>
 
           <p className="text-sm md:text-base text-gray-700 max-w-xl mt-3">
-           For each category, you can specify your requirements, schedule routine or on-demand pickups, 
-           and access tailored waste management solutions.
+            For each category, you can specify your requirements, schedule routine or on-demand pickups, 
+            and access tailored waste management solutions.
           </p>
         </div>
       </div>
@@ -64,65 +153,27 @@ const HeaderComponent = () => {
   );
 };
 
-// --- WasteManagementSection ---
-const serviceSegments = [
-  { id: "residential", name: "Residential", icon: <Home className="w-5 h-5 mr-2" /> },
-  { id: "commercial", name: "Commercial & SME", icon: <Building2 className="w-5 h-5 mr-2" /> },
-  { id: "industrial", name: "Industrial", icon: <Factory className="w-5 h-5 mr-2" /> },
-];
-
-const residentialCards = [
-  {
-    title: "Hostels / Student Housing",
-    imageSrc: "/images/hostels.png",
-    description:
-      "Specialized collection service for hostels, dormitories, or shared student accommodation. Ensures consistent pickup and eco-friendly disposal.",
-    learnMoreLink: "/waste/residential/hostels",
-  },
-  {
-    title: "Apartments / Staff Housing",
-    imageSrc: "/images/apartment.png",
-    description:
-      "Dedicated service for apartment complexes and staff housing units. Flexible pickup schedules to handle mixed residential volumes.",
-    learnMoreLink: "/waste/residential/apartments",
-  },
-  {
-    title: "Private Homes",
-    imageSrc: "/images/private homes.png",
-    description:
-      "Standard residential service for single-family homes. Includes scheduled and on-demand options tailored to your household's needs.",
-    learnMoreLink: "/waste/residential/private-homes",
-  },
-];
-
-const commercialSmeCards = [
-  {
-    title: "Small & Medium Enterprises",
-    imageSrc: "/images/commercial.png", // Placeholder image added
-    description:
-      "Tailored solutions for SMEs producing moderate waste volumes. Supports restaurants, offices, and institutions with scheduled pickups.",
-    learnMoreLink: "/waste/commercial/sme",
-  },
-];
-
-const industrialCards = [
-  {
-    title: "Industrial Waste Management",
-    imageSrc: "/images/industrial.png", // Placeholder image added
-    description:
-      "High-volume waste solutions for factories, manufacturing plants, and large facilities. Includes regulatory compliance and environmental audits.",
-    learnMoreLink: "/waste/industrial",
-  },
-];
-
-type CardType = {
-  title: string;
-  description: string;
-  learnMoreLink: string;
-  imageSrc: string;
-};
-
+// --- WasteCardsGrid Component ---
 const WasteCardsGrid = ({ cards }: { cards: CardType[] }) => {
+  // DUMMY AUTH CHECK: isLoggedIn is still false, but we remove the logic that uses it
+  const isLoggedIn = false; 
+  const router = useRouter();
+
+  const handleLearnMore = (link: string) => {
+      // NEW LOGIC: ALWAYS navigate directly to the link. 
+      // The AuthCTA banner on the destination page will handle the login prompt.
+      router.push(link);
+      
+      // We removed the old conditional redirect:
+      /*
+      if (!isLoggedIn && link.includes("/waste/residential")) {
+          router.push(`/auth/login?redirect=${link}`);
+      } else {
+          router.push(link);
+      }
+      */
+  };
+
   return (
     <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
       {cards.map((card) => (
@@ -144,24 +195,20 @@ const WasteCardsGrid = ({ cards }: { cards: CardType[] }) => {
           </div>
           <div className="p-4 md:p-6 flex flex-col flex-grow">
             <p className="text-gray-600 text-sm leading-relaxed mb-4 flex-grow">{card.description}</p>
-            <Link
-              href={card.learnMoreLink}
+            
+            <button
+              onClick={() => handleLearnMore(card.learnMoreLink)}
               className="flex items-center justify-center px-3 py-2 mt-auto border border-transparent text-sm font-medium rounded-md text-white bg-green-700 hover:bg-green-800 transition"
             >
               Learn More
               <svg className="ml-2 w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
                 <path
                   fillRule="evenodd"
-                  d="M10.293 3.293a1 1 0 
-                  011.414 0l6 6a1 1 0 010 
-                  1.414l-6 6a1 1 0 
-                  01-1.414-1.414L14.586 
-                  11H3a1 1 0 110-2h11.586l-4.293-4.293a1 
-                  1 0 010-1.414z"
+                  d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"
                   clipRule="evenodd"
                 />
               </svg>
-            </Link>
+            </button>
           </div>
         </div>
       ))}
@@ -169,8 +216,25 @@ const WasteCardsGrid = ({ cards }: { cards: CardType[] }) => {
   );
 };
 
+
+// --- WasteManagementSection Component ---
 const WasteManagementSection = () => {
   const [activeSegment, setActiveSegment] = useState("residential");
+
+  // Helper function to determine which cards to display
+  const renderCards = () => {
+    switch (activeSegment) {
+      case "residential":
+        return <WasteCardsGrid cards={residentialCards} />;
+      case "commercial":
+        return <WasteCardsGrid cards={commercialSmeCards} />;
+      case "industrial":
+        return <WasteCardsGrid cards={industrialCards} />;
+      default:
+        return null;
+    }
+  };
+
 
   return (
     <section className="max-w-7xl mx-auto px-6 md:px-10 py-16 md:py-20">
@@ -195,41 +259,15 @@ const WasteManagementSection = () => {
 
       {/* Animated Content */}
       <AnimatePresence mode="wait">
-        {activeSegment === "residential" && (
-          <motion.div
-            key="residential"
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -10 }}
-            transition={{ duration: 0.4 }}
-          >
-            <WasteCardsGrid cards={residentialCards} />
-          </motion.div>
-        )}
-
-        {activeSegment === "commercial" && (
-          <motion.div
-            key="commercial"
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -10 }}
-            transition={{ duration: 0.4 }}
-          >
-            <WasteCardsGrid cards={commercialSmeCards} />
-          </motion.div>
-        )}
-
-        {activeSegment === "industrial" && (
-          <motion.div
-            key="industrial"
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -10 }}
-            transition={{ duration: 0.4 }}
-          >
-            <WasteCardsGrid cards={industrialCards} />
-          </motion.div>
-        )}
+        <motion.div
+          key={activeSegment}
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: -10 }}
+          transition={{ duration: 0.4 }}
+        >
+          {renderCards()}
+        </motion.div>
       </AnimatePresence>
     </section>
   );

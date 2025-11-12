@@ -67,7 +67,7 @@ const GreenLoopNavBar = () => {
                 Home
               </Link>
 
-              {/* About Us Dropdown */}
+              {/* About Us Dropdown (No changes needed, already comprehensive) */}
               <DropdownMenu>
                 <DropdownMenuTrigger asChild>
                   <Button variant="ghost" className="flex items-center text-gray-700 hover:text-green-700">
@@ -82,21 +82,21 @@ const GreenLoopNavBar = () => {
                     <Link href="/service-areas" className="hover:text-green-600">Service Areas</Link>
                   </DropdownMenuItem>
                   <DropdownMenuItem asChild>
-                   <Link href="/methodology" className="hover:text-green-600">Methodology</Link>
+                  <Link href="/about-us/methodology">Methodology</Link>
                   </DropdownMenuItem>
                   <DropdownMenuItem asChild>
-                    <Link href="/about/technology-innovation">Technology & Innovation</Link>
+                    <Link href="/about-us/technology-innovation">Technology & Innovation</Link>
                   </DropdownMenuItem>
                   <DropdownMenuItem asChild>
-                    <Link href="/about/partnerships">Partnerships</Link>
+                    <Link href="/about-us/patnerships">Partnerships</Link>
                   </DropdownMenuItem>
                   <DropdownMenuItem asChild>
-                    <Link href="/about/safety-compliance">Safety & Compliance</Link>
+                    <Link href="/about-us/safety-compliance">Safety & Compliance</Link>
                   </DropdownMenuItem>
                 </DropdownMenuContent>
               </DropdownMenu>
 
-              {/* Learning Hub */}
+              {/* Learning Hub Dropdown (Updated Links) */}
               <DropdownMenu>
                 <DropdownMenuTrigger asChild>
                   <Button variant="ghost" className="text-gray-700 hover:text-green-700">
@@ -105,18 +105,21 @@ const GreenLoopNavBar = () => {
                 </DropdownMenuTrigger>
                 <DropdownMenuContent className="bg-white shadow-lg border rounded-md p-1">
                   <DropdownMenuItem asChild>
-                    <Link href="/guides">Guides</Link>
+                    <Link href="/learning-hub/guides">Recycling Guides</Link>
                   </DropdownMenuItem>
                   <DropdownMenuItem asChild>
-                    <Link href="/videos">Videos</Link>
+                    <Link href="/learning-hub/videos">Educational Videos</Link>
                   </DropdownMenuItem>
                   <DropdownMenuItem asChild>
-                    <Link href="/tutorials">Tutorials</Link>
+                    <Link href="/learning-hub/waste-types">Waste Classification</Link>
+                  </DropdownMenuItem>
+                  <DropdownMenuItem asChild>
+                    <Link href="/learning-hub/faqs">FAQs</Link>
                   </DropdownMenuItem>
                 </DropdownMenuContent>
               </DropdownMenu>
 
-              {/* Join the Movement */}
+              {/* Join the Movement Dropdown (Updated Links) */}
               <DropdownMenu>
                 <DropdownMenuTrigger asChild>
                   <Button variant="ghost" className="text-gray-700 hover:text-green-700">
@@ -125,10 +128,16 @@ const GreenLoopNavBar = () => {
                 </DropdownMenuTrigger>
                 <DropdownMenuContent className="bg-white shadow-lg border rounded-md p-1">
                   <DropdownMenuItem asChild>
-                    <Link href="/volunteer">Volunteer</Link>
+                    <Link href="/community/volunteer">Volunteer</Link>
                   </DropdownMenuItem>
                   <DropdownMenuItem asChild>
-                    <Link href="/donate">Donate</Link>
+                    <Link href="/community/sponsorship">Sponsor a Project</Link>
+                  </DropdownMenuItem>
+                  <DropdownMenuItem asChild>
+                    <Link href="/community/careers">Careers at Green Loop</Link>
+                  </DropdownMenuItem>
+                  <DropdownMenuItem asChild>
+                    <Link href="/community/partnerships">Partnerships</Link>
                   </DropdownMenuItem>
                 </DropdownMenuContent>
               </DropdownMenu>
@@ -163,53 +172,48 @@ const GreenLoopNavBar = () => {
           </div>
         </div>
 
-        {/* ✅ Mobile Dropdown Menu */}
+        {/* ✅ Mobile Dropdown Menu (Updated for consistency) */}
         {isMobileOpen && (
           <div className="lg:hidden bg-white border-t border-gray-200 shadow-md">
             <div className="flex flex-col p-4 space-y-3">
-              <Link href="/" className="text-gray-700 hover:text-green-700">
+              <Link href="/" onClick={() => setIsMobileOpen(false)} className="text-gray-700 hover:text-green-700">
                 Home
               </Link>
 
-              <div className="flex flex-col space-y-1">
-                <span className="text-gray-700 font-medium">About Us</span>
-                <Link href="/about/who-we-are" className="text-gray-600 hover:text-green-700 pl-4">
-                  Who We Are
-                </Link>
-                <Link href="/about/our-story" className="text-gray-600 hover:text-green-700 pl-4">
-                  Our Story
-                </Link>
-                <Link href="/about/service-areas" className="text-gray-600 hover:text-green-700 pl-4">
-                  Service Areas
-                </Link>
-                <Link href="/about/sustainability-goals" className="text-gray-600 hover:text-green-700 pl-4">
-                  Sustainability Goals
-                </Link>
-                <Link href="/about/client-community-policies" className="text-gray-600 hover:text-green-700 pl-4">
-                  Client & Community Policies
-                </Link>
-                <Link href="/about/technology-innovation" className="text-gray-600 hover:text-green-700 pl-4">
-                  Technology & Innovation
-                </Link>
-                <Link href="/about/partnerships" className="text-gray-600 hover:text-green-700 pl-4">
-                  Partnerships
-                </Link>
-                <Link href="/about/safety-compliance" className="text-gray-600 hover:text-green-700 pl-4">
-                  Safety & Compliance
-                </Link>
+              {/* Mobile About Us Links */}
+              <div className="flex flex-col space-y-1 border-b pb-2">
+                <span className="text-green-700 font-bold">About Us</span>
+                <Link href="/about-us" onClick={() => setIsMobileOpen(false)} className="text-gray-600 hover:text-green-700 pl-4">Who We Are</Link>
+                <Link href="/service-areas" onClick={() => setIsMobileOpen(false)} className="text-gray-600 hover:text-green-700 pl-4">Service Areas</Link>
+                <Link href="/about-us/methodology" onClick={() => setIsMobileOpen(false)} className="text-gray-600 hover:text-green-700 pl-4">Methodology</Link>
+                <Link href="/about-us/technology-innovation" onClick={() => setIsMobileOpen(false)} className="text-gray-600 hover:text-green-700 pl-4">Technology & Innovation</Link>
+                <Link href="/about-us/patnerships" onClick={() => setIsMobileOpen(false)} className="text-gray-600 hover:text-green-700 pl-4">Partnerships</Link>
+                <Link href="/about-us/safety-compliance" onClick={() => setIsMobileOpen(false)} className="text-gray-600 hover:text-green-700 pl-4">Safety & Compliance</Link>
+              </div>
+              
+              {/* Mobile Learning Hub Links */}
+              <div className="flex flex-col space-y-1 border-b pb-2">
+                <span className="text-green-700 font-bold">Learning Hub</span>
+                <Link href="/learning-hub/guides" onClick={() => setIsMobileOpen(false)} className="text-gray-600 hover:text-green-700 pl-4">Recycling Guides</Link>
+                <Link href="/learning-hub/videos" onClick={() => setIsMobileOpen(false)} className="text-gray-600 hover:text-green-700 pl-4">Educational Videos</Link>
+                <Link href="/learning-hub/waste-types" onClick={() => setIsMobileOpen(false)} className="text-gray-600 hover:text-green-700 pl-4">Waste Classification</Link>
+                <Link href="/learning-hub/faqs" onClick={() => setIsMobileOpen(false)} className="text-gray-600 hover:text-green-700 pl-4">FAQs</Link>
               </div>
 
-              <Link href="/learning" className="text-gray-700 hover:text-green-700">
-                Learning Hub
-              </Link>
-              <Link href="/join" className="text-gray-700 hover:text-green-700">
-                Join the Movement
-              </Link>
-              <Link href="/contact" className="text-gray-700 hover:text-green-700">
+              {/* Mobile Join the Movement Links */}
+              <div className="flex flex-col space-y-1 border-b pb-2">
+                <span className="text-green-700 font-bold">Join the Movement</span>
+                <Link href="/community/volunteer" onClick={() => setIsMobileOpen(false)} className="text-gray-600 hover:text-green-700 pl-4">Volunteer</Link>
+                <Link href="/community/sponsorship" onClick={() => setIsMobileOpen(false)} className="text-gray-600 hover:text-green-700 pl-4">Sponsor a Project</Link>
+                <Link href="/community/careers" onClick={() => setIsMobileOpen(false)} className="text-gray-600 hover:text-green-700 pl-4">Careers at Green Loop</Link>
+                <Link href="/community/partnerships" onClick={() => setIsMobileOpen(false)} className="text-gray-600 hover:text-green-700 pl-4">Partnerships</Link>
+              </div>
+
+              <Link href="/contact" onClick={() => setIsMobileOpen(false)} className="text-gray-700 hover:text-green-700">
                 Contact Us
               </Link>
 
-              <div className="w-full">
+              <div className="w-full pt-2">
                 <RegisterDialog />
               </div>
             </div>

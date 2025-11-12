@@ -1,59 +1,71 @@
 "use client";
 
-import { useState } from "react";
-import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
-import RegisterForm from "./RegisterForm";
+import Link from "next/link";
+import { LogIn, UserPlus } from "lucide-react";
 
-export default function RegisterDialog() {
-  const [open, setOpen] = useState(false);
-  const [success, setSuccess] = useState(false);
-
-  const handleSuccess = () => {
-    setSuccess(true);
-  };
-
-  const handleClose = () => {
-    setOpen(false);
-    setSuccess(false); // reset message when dialog closes
-  };
-
+const RegisterDialog = () => {
   return (
-    <>
-      {/* Button to open the dialog */}
-      <Button
-        onClick={() => setOpen(true)}
-        className="bg-green-600 hover:bg-green-700 text-white rounded-xl px-6 py-2"
-      >
-        Register Now
-      </Button>
+    <Dialog>
+      {/* --- Trigger Button (What the user clicks in the Navbar) --- */}
+      <DialogTrigger asChild>
+        <Button className="bg-green-600 hover:bg-green-700 text-white shadow-md transition duration-200">
+          Register Now
+        </Button>
+      </DialogTrigger>
 
-      {/* Dialog box */}
-      <Dialog open={open} onOpenChange={handleClose}>
-        <DialogContent className="sm:max-w-[500px]">
-          <DialogHeader>
-            <DialogTitle className="text-center text-xl font-semibold">
-              {success ? "Success!" : "Create an Account"}
-            </DialogTitle>
-          </DialogHeader>
+      {/* --- Modal Content --- */}
+      <DialogContent className="sm:max-w-[425px] p-6 rounded-xl">
+        <DialogHeader>
+          <DialogTitle className="text-2xl text-green-800">
+            Start Your Green Journey
+          </DialogTitle>
+          <DialogDescription className="text-gray-600">
+            Choose an option below to access scheduling, rewards, and reporting tools.
+          </DialogDescription>
+        </DialogHeader>
 
-          {/* Show success message or form */}
-          {success ? (
-            <div className="text-center mt-4">
-              <p className="mb-4">Your account has been created successfully 🎉</p>
-              <Button
-                variant="default"
-                onClick={handleClose}
-                className="bg-green-700 text-white hover:bg-green-800"
-              >
-                Close
-              </Button>
+        <div className="grid gap-4 py-4">
+          
+          {/* Option 1: Register */}
+          <div className="flex items-center space-x-4 p-4 border border-green-200 rounded-lg bg-green-50">
+            <UserPlus className="w-6 h-6 text-green-700" />
+            <div>
+              <p className="font-semibold text-gray-800">New User?</p>
+              <p className="text-sm text-gray-600">Create an account in minutes.</p>
             </div>
-          ) : (
-            <RegisterForm onSuccess={handleSuccess} />
-          )}
-        </DialogContent>
-      </Dialog>
-    </>
+            <Link href="/auth/register" passHref className="ml-auto">
+              <Button className="bg-green-600 hover:bg-green-700">
+                Sign Up
+              </Button>
+            </Link>
+          </div>
+
+          {/* Option 2: Login */}
+          <div className="flex items-center space-x-4 p-4 border border-gray-200 rounded-lg">
+            <LogIn className="w-6 h-6 text-gray-600" />
+            <div>
+              <p className="font-semibold text-gray-800">Already Registered?</p>
+              <p className="text-sm text-gray-600">Welcome back! Sign in here.</p>
+            </div>
+            <Link href="/auth/login" passHref className="ml-auto">
+              <Button variant="outline" className="text-gray-700 border-gray-300 hover:bg-gray-50">
+                Login
+              </Button>
+            </Link>
+          </div>
+        </div>
+      </DialogContent>
+    </Dialog>
   );
-}
+};
+
+export default RegisterDialog;

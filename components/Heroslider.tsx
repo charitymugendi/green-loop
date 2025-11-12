@@ -3,20 +3,36 @@
 import { useRef, useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { useRouter } from "next/navigation"; // 1. Import useRouter
+
+// Define the shape for a slide item
+interface Slide {
+  type: "video" | "image";
+  src: string;
+  title: string;
+  desc: string;
+  cta: { label: string; link: string };
+  color: string;
+}
 
 export default function HeroSlider() {
-  const slides = [
+  const router = useRouter(); // 2. Initialize router
+  
+  // DUMMY AUTH STATE: Replace with your actual authentication context/hook
+  const [isLoggedIn, setIsLoggedIn] = useState(false); 
+  
+  const slides: Slide[] = [
     // ✅ 1️⃣ Green Loop Waste Management
     {
       type: "video",
       src: "/videos/waste1.mp4",
       title: "Green Loop Waste Management",
       desc: "Empowering communities with smart, eco-friendly waste solutions for a cleaner and greener Ndagani. Together, we close the loop for a sustainable future.",
-      cta: { label: "Learn More", link: "/about" },
+      cta: { label: "Learn More", link: "/about-us" },
       color: "from-green-700 to-green-500",
     },
 
-    // ✅ 2️⃣ Report Waste Issues
+    // ✅ 2️⃣ Report Waste Issues (Link: /report)
     {
       type: "image",
       src: "/images/report waste.png",
@@ -56,6 +72,22 @@ export default function HeroSlider() {
     }, 7000);
     return () => clearInterval(interval);
   }, [slides.length]);
+
+  /**
+   * Handles the click on a CTA button.
+   * Forces redirect to login if the link is /report and the user is not logged in.
+   * @param link The target URL.
+   */
+  const handleCtaClick = (link: string) => {
+    if (link === "/report" && !isLoggedIn) {
+      // 3. Logic: If user is not logged in and clicking 'Report', redirect to login
+      router.push(`/auth/login?redirect=${link}`);
+    } else {
+      // 4. Otherwise, navigate directly
+      router.push(link);
+    }
+  };
+
 
   return (
     <section className="relative w-full h-[90vh] overflow-hidden">
@@ -101,12 +133,13 @@ export default function HeroSlider() {
               {slide.desc}
             </p>
             {slide.cta && (
-              <Link
-                href={slide.cta.link}
+              // Use a button and the handler instead of the Link component for the conditional redirect
+              <button
+                onClick={() => handleCtaClick(slide.cta.link)}
                 className="inline-block px-8 py-3 text-base md:text-lg font-semibold text-white bg-green-600 rounded-full hover:bg-green-700 transition duration-300 shadow-lg transform hover:scale-105"
               >
                 {slide.cta.label}
-              </Link>
+              </button>
             )}
           </div>
         </div>
