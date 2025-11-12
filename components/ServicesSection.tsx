@@ -25,7 +25,7 @@ const services = [
     title: "Recycling Rewards Program",
     description:
       "Earn Green Points each time you recycle correctly and redeem them for discounts or community benefits.",
-    imageSrc: "/images/reward program.png", // Add a relevant image in public/images
+    imageSrc: "/images/reward program.png",
   },
 ];
 
@@ -33,6 +33,16 @@ export default function ServicesSection() {
   return (
     <section className="py-20 bg-gray-50">
       <div className="max-w-7xl mx-auto px-6 text-center">
+        {/* Heading and Explanation */}
+        <div className="mb-12">
+          <h2 className="text-3xl font-bold text-gray-900 mb-4">
+            What We Do
+          </h2>
+          <p className="text-gray-600 text-lg max-w-2xl mx-auto">
+            At Green Loop, we provide innovative waste management solutions that make recycling simple, efficient, and rewarding for homes, businesses, and communities. Our goal is to empower everyone to take part in a cleaner, greener world.
+          </p>
+        </div>
+
         {/* Cards Grid */}
         <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
           {services.map((service, index) => (

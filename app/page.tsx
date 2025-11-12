@@ -4,6 +4,9 @@ import CombinedWastePage from "@/components/CombinedWastePage";
 import AIHeroSection from "@/components/AIHeroSection"
 import FooterComponent from "@/components/FooterComponent"
 
+
+
+
 export default function Home() {
   return (
     <main className="bg-gray-50 min-h-screen">

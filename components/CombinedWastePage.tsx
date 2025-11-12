@@ -55,9 +55,8 @@ const HeaderComponent = () => {
           </p>
 
           <p className="text-sm md:text-base text-gray-700 max-w-xl mt-3">
-            Whether you’re applying for <strong>Scheduled Service</strong> for routine collections 
-            or <strong>On-Demand Pickup</strong> for occasional waste, Green Loop provides reliable, 
-            eco-friendly solutions designed to make waste management simple and impactful.
+           For each category, you can specify your requirements, schedule routine or on-demand pickups, 
+           and access tailored waste management solutions.
           </p>
         </div>
       </div>
